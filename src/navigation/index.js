@@ -11,8 +11,19 @@ const Stack = createNativeStackNavigator();
 const Navigator = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerStyle: {backgroundColor: 'whitesmoke'}}}>
-                <Stack.Screen name='Home' component={MainTabNavigator} options={{headerShown: false}}/> 
+            <Stack.Navigator screenOptions={{
+                headerStyle: {
+                    backgroundColor: "white",
+                },
+                headerTitleStyle: {
+                    fontFamily: "Antarctica",
+                    fontSize: 22,
+                    fontWeight: "bold",
+                    color: "#242C34",
+                },
+                headerTitleAlign: 'center',
+            }}>
+                <Stack.Screen name='Home' component={MainTabNavigator} options={{ headerShown: false }} />
                 <Stack.Screen name='Chats' component={ChatScreens} />
                 <Stack.Screen name='Chat' component={ChatScreen} />
             </Stack.Navigator>

@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
-import {SafeAreaView} from 'react-native-safe-area-context'
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 const InputBox = () => {
 
     const [newMessage, setNewMessage] = useState('');
@@ -11,45 +12,57 @@ const InputBox = () => {
     }
 
     return (
-        <SafeAreaView styles={styles.container} edges={['bottom']}>
+        <View style={styles.container}>
+            {/* Icon */}
+            <AntDesign name="plus" size={24} color="#007AFF" />
 
-            <AntDesign name='plus' size={24} color='royalblue' />
-
+            {/* Text Input */}
             <TextInput
-             value={newMessage}
-             style={styles.input}
-             onChangeText={setNewMessage}
-              placeholder='type your message...' />
+                value={newMessage}
+                onChangeText={setNewMessage}
+                style={styles.input}
+                placeholder="type your message..."
+            />
 
-            <MaterialIcons onPress={onSend} style={styles.sendButton} name='send' size={24} color='white' />
-        </SafeAreaView>
+            {/* Icon */}
+            <MaterialIcons onPress={onSend} style={styles.send} name="send" size={18} color="white" />
+        </View>
     )
 }
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        // width: "100%",
+        // bottom: 0,
         flexDirection: 'row',
-        backgroundColor: 'whitesmoke',
-        padding: 5,
-        paddingHorizontal: 10,
         alignItems: 'center',
+
+        padding: 12,
+        paddingHorizontal: 16,
+        borderTopWidth: .6, borderTopColor: "rgba(0, 0, 0, 0.2)"
     },
     input: {
+        fontFamily: "Antarctica",
+        fontSize: 15,
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#F5F7FB',
+        height: 40,
         padding: 5,
-        paddingHorizontal: 10,
+        paddingHorizontal: 12,
         marginHorizontal: 10,
         borderRadius: 50,
-        borderColor: 'lightGray',
-        borderWidth: StyleSheet.hairlineWidth
-
+        borderColor: 'rgba(0, 0, 0, 0.2)',
+        borderWidth: .6
     },
     send: {
-        backgroundColor:'royalblue',
-        padding: 7,
-        borderRadius: 15,
-        overflow: 'hidden'
-    }
+        backgroundColor: '#007AFF',
+        padding: 9,
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        display: 'flex',
+        overflow: 'hidden',
+    },
 
 })
 export default InputBox

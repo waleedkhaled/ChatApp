@@ -8,7 +8,7 @@ dayjs.extend(relativeTime);
 const ChatListItem = ({ chat }) => {
     const navigation = useNavigation();
     return (
-        <Pressable onPress={()=>navigation.navigate('Chat', {id: chat.id, name: chat.user.name})} style={styles.container}>
+        <Pressable onPress={() => navigation.navigate('Chat', { id: chat.id, name: chat.user.name })} style={styles.container}>
             <Image source={{ uri: chat.user.image }}
                 style={styles.image} />
             <View style={styles.content}>
@@ -16,7 +16,7 @@ const ChatListItem = ({ chat }) => {
                     <Text style={styles.name} numberOfLines={1}>{chat.user.name}</Text>
                     <Text style={styles.subTitle}>{dayjs(chat.lastMessage.createdAt).fromNow(true)}</Text>
                 </View>
-                <Text style={styles.subTitle} numberOfLines={2}>{chat.lastMessage.text}</Text>
+                <Text style={styles.subTitle} numberOfLines={1}>{chat.lastMessage.text}</Text>
             </View>
         </Pressable>
     )
@@ -25,31 +25,35 @@ const ChatListItem = ({ chat }) => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        marginHorizontal: 10,
-        marginVertical: 10,
-        height: 70
+        marginVertical: 12,
     },
     image: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        marginRight: 10
+        width: 66,
+        height: 66,
+        borderRadius: 33,
+        marginRight: 10,
     },
     content: {
         flex: 1,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: 'grey'
     },
     row: {
         flexDirection: 'row',
-        marginBottom: 5
+        marginBottom: 2
     },
     name: {
-        flex:1,
-        fontWeight: 'bold'
+        flex: 1,
+        color: '#242C34',
+        fontFamily: "Antarctica",
+        fontSize: 17,
+        fontWeight: '800',
+        marginBottom: 2,
+
     },
     subTitle: {
-        color: 'grey'
+        color: '#999999',
+        fontFamily: "Antarctica",
+        fontSize: 15,
+        maxWidth: 420,
     },
 
 })
