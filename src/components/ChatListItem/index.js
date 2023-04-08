@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         flex: 1,
         color: '#242C34',
         fontFamily: "Antarctica",
-        fontSize: 17,
+        fontSize: 16,
         fontWeight: '800',
         marginBottom: 2,
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     subTitle: {
         color: '#999999',
         fontFamily: "Antarctica",
-        fontSize: 15,
+        fontSize: 14,
         maxWidth: 420,
     },
 

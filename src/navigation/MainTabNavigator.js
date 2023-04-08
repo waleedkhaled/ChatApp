@@ -51,12 +51,13 @@ const MainTabNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => (<Ionicons name="camera-outline" size={28} color={color}
         />)
       }} />
-      <Tab.Screen name="Chats" component={ChatScreens} options={{
-        tabBarIcon: ({ focused, color, size }) => (<Ionicons name="chatbubbles-outline" size={28} color={color}
-        />
+      <Tab.Screen name="Chats" component={ChatScreens} options={({ navigation }) => ({
+        tabBarIcon: ({ focused, color, size }) => (
+          <Ionicons name="chatbubbles-outline" size={28} color={color} />
         ),
         headerRight: () => (
           <Entypo
+            onPress={() => navigation.navigate('Contacts')}
             name="new-message"
             size={20}
             color={"#007AFF"}
@@ -64,7 +65,7 @@ const MainTabNavigator = () => {
           />
 
         )
-      }} />
+      })} />
       <Tab.Screen name="Settings" component={NotImplementedScreen} options={{
         tabBarIcon: ({ focused, color, size }) => (<Ionicons name="settings-outline" size={28} color={color}
         />)
