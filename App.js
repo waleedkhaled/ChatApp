@@ -3,12 +3,14 @@ import { StyleSheet, View } from 'react-native';
 import ChatScreens from './src/screens/ChatScreens';
 import ChatScreen from './src/screens/ChatScreen';
 import Navigator from './src/navigation';
-import { useFonts } from 'expo-font';
+import { useFonts } from 'expo-font'; 
+import { Amplify } from 'aws-amplify';
+import awsconfig from "./src/aws-exports"
+import { withAuthenticator } from 'aws-amplify-react-native';
 
+Amplify.configure({ ...awsconfig, Analytics: { disabled: true } });
 
-
-
-export default function App() {
+function App() {
   //Load the custom font
   const [fontLoaded] = useFonts({
     'Antarctica': require('./assets/fonts/AntarcticaBetaVAR-Regular.ttf')
@@ -16,7 +18,7 @@ export default function App() {
   if (!fontLoaded) {
     return undefined;
   }
-
+  
   return (
     <View style={styles.container}>
       <Navigator />
@@ -32,3 +34,5 @@ const styles = StyleSheet.create({
     // backgroundColor: 'whitesmoke',
   },
 });
+
+export default withAuthenticator(App);

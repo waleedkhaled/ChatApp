@@ -3,6 +3,9 @@ import NotImplementedScreen from "../screens/NotImplementedScreen";
 import ChatScreens from "../screens/ChatScreens";
 import ChatScreen from "../screens/ChatScreen";
 import { Ionicons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
+import SettingsScreen from "../screens/SettingsScreen";
+import { Ionicons, Entypo } from '@expo/vector-icons'
+
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = () => {
