@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     borderRadius: 33,
     marginRight: 10,
   },
+  content:{
+    flex:1,
+  },
   name: {
     fontFamily: "Antarctica",
     color: "#242C34",

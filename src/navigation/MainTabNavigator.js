@@ -4,7 +4,6 @@ import ChatScreens from "../screens/ChatScreens";
 import ChatScreen from "../screens/ChatScreen";
 import { Ionicons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import SettingsScreen from "../screens/SettingsScreen";
-import { Ionicons, Entypo } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
@@ -69,7 +68,7 @@ const MainTabNavigator = () => {
 
         )
       })} />
-      <Tab.Screen name="Settings" component={NotImplementedScreen} options={{
+      <Tab.Screen name="Settings" component={SettingsScreen} options={{
         tabBarIcon: ({ focused, color, size }) => (<Ionicons name="settings-outline" size={28} color={color}
         />)
       }} />
