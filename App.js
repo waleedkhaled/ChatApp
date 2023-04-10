@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import ChatScreens from './src/screens/ChatScreens';
+import ChatsScreen from './src/screens/ChatsScreen/ChatsScreen';
 import ChatScreen from './src/screens/ChatScreen';
 import Navigator from './src/navigation';
 import { useFonts } from 'expo-font';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import awsconfig from "./src/aws-exports"
 import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify';
-import {getUser} from "./src/graphql/queries"
-import {createUser} from "./src/graphql/mutations"
+import {getUser} from "./src/graphql/queries";
+import {createUser} from "./src/graphql/mutations";
 
 
 Amplify.configure({ ...awsconfig, Analytics: { disabled: true } });
@@ -19,16 +19,17 @@ function App() {
     const syncUser = async () => {
       //Authenticated user
       const authUser = await Auth.currentAuthenticatedUser({ bypassCache: true })
-      //sub as user ID
-      const userID = authUser.attributes.sub;
       //Search if auth user already exists in DB
-      const userData = await API.graphql(graphqlOperation(getUser, { id: userID }))
+      const userData = await API.graphql(
+        graphqlOperation(getUser, { id: authUser.attributes.sub })
+      )
       if(userData.data.getUser){
         console.log("User already exists in database!")
+        return;
       }
 
       const newUser = {
-        id: userID,
+        id: authUser.attributes.sub,
         name: authUser.attributes.phone_number,
         status: 'Hey, I am using ChatApp'
       }
@@ -47,8 +48,6 @@ function App() {
   if (!fontLoaded) {
     return undefined;
   }
-
-
 
   return (
     <View style={styles.container}>
