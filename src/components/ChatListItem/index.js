@@ -1,8 +1,8 @@
-import { Text, View, Image, StyleSheet, Pressable } from "react-native";
+import { useEffect, useState } from "react";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useEffect, useState } from "react";
 import { Auth } from "aws-amplify";
 
 dayjs.extend(relativeTime);
@@ -39,12 +39,14 @@ const ChatListItem = ({ chat }) => {
           <Text style={styles.name} numberOfLines={1}>
             {user?.name}
           </Text>
-          <Text style={styles.subTitle}>
-            {dayjs(chat.lastMessage?.createdAt).fromNow(true)}
-          </Text>
+          {chat.LastMessage && (
+            <Text style={styles.subTitle}>
+              {dayjs(chat.LastMessage?.createdAt).fromNow(true)}
+            </Text>
+          )}
         </View>
         <Text style={styles.subTitle} numberOfLines={1}>
-          {chat.lastMessage?.text}
+          {chat.LastMessage?.text}
         </Text>
       </View>
     </Pressable>
