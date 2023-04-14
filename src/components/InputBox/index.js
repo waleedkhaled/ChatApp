@@ -50,6 +50,7 @@ const InputBox = ({ chatroom }) => {
 
       {/* Icon */}
       <MaterialIcons
+        disabled={text.length === 0} //to prevent submitting an empty message
         onPress={onSend}
         style={styles.send}
         name="send"
