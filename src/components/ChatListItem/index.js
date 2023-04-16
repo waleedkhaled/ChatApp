@@ -20,7 +20,7 @@ const ChatListItem = ({ chat }) => {
 
       // Loop through chat.users.items and find a user that is not us (Authenticated user)
       const userItem = chatRoom.users.items.find(
-        (item) => item.user.id !== authUser.attributes.sub
+        (item) => item?.user?.id !== authUser.attributes.sub
       );
       setUser(userItem?.user);
     };
@@ -48,11 +48,12 @@ const ChatListItem = ({ chat }) => {
   return (
     <Pressable
       onPress={() =>
-        navigation.navigate("Chat", { id: chatRoom.id, name: user?.name })
+        navigation.navigate("Chat", { id: chatRoom?.id, name: user?.name })
       }
       style={styles.container}
     >
       <Image source={{ uri: user?.image }} style={styles.image} />
+      
       <View style={styles.content}>
         <View style={styles.row}>
           <Text style={styles.name} numberOfLines={1}>
@@ -75,13 +76,17 @@ const ChatListItem = ({ chat }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginVertical: 12,
+    marginVertical: 2,
+    paddingVertical: 10,
+    alignItems: "center",
   },
   image: {
     width: 66,
     height: 66,
     borderRadius: 33,
     marginRight: 10,
+    borderWidth: 1,
+    borderColor: "rgba(0, 0, 0, 0.1)",
   },
   content: {
     flex: 1,
@@ -92,14 +97,14 @@ const styles = StyleSheet.create({
   },
   name: {
     flex: 1,
-    color: "#242C34",
+    color: "#18181b",
     fontFamily: "Antarctica",
     fontSize: 16,
     fontWeight: "800",
     marginBottom: 2,
   },
   subTitle: {
-    color: "#999999",
+    color: "#a1a1aa",
     fontFamily: "Antarctica",
     fontSize: 14,
     maxWidth: 420,

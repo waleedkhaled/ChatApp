@@ -92,7 +92,7 @@ const ChatRoomInfo = () => {
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          marginTop: 10,
+          marginTop: 4,
           marginBottom: 2,
         }}
       >
@@ -123,31 +123,32 @@ const ChatRoomInfo = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 16,
     flex: 1,
-    marginTop: 8,
+    backgroundColor: "#fafafa",
   },
   title: {
     fontFamily: "Antarctica",
     fontWeight: "bold",
     fontSize: 30,
-    color: "#242C34",
+    color: "#27272a",
   },
   sectionTitle: {
     flex: 1,
     fontFamily: "Antarctica",
     fontSize: 16,
-    color: "#777",
+    color: "#999",
   },
   section: {
-    backgroundColor: "white",
-    borderRadius: 5,
     marginVertical: 10,
+    borderTopWidth: 0.6,
+    borderTopColor: "rgba(0, 0, 0, 0.2)",
+    paddingTop: 8
   },
   invite: {
     fontFamily: "Antarctica",
     fontSize: 16,
-    color: "#007AFF",
+    color: "#3633DA",
   },
 });
 

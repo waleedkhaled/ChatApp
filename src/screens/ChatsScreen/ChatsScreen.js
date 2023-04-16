@@ -45,7 +45,7 @@ const ChatsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F5F7FB",
+    backgroundColor: "white",
     paddingHorizontal: 14,
     paddingTop: 4,
   },

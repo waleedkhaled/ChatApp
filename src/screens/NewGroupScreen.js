@@ -27,6 +27,7 @@ const ContactsScreen = () => {
           title="Create"
           disabled={!name || selectedUserIds.length < 1}
           onPress={onCreateGroupPress}
+          color={"#3633DA"}
         />
       ),
     });
@@ -84,6 +85,7 @@ const ContactsScreen = () => {
     <View style={styles.container}>
       <TextInput
         placeholder="Group name"
+        placeholderTextColor="#a1a1aa"
         value={name}
         onChangeText={setName}
         style={styles.input}
@@ -104,12 +106,15 @@ const ContactsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: "white" },
+  container: { backgroundColor: "#fafafa" },
   input: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: "lightgray",
-    padding: 10,
+    borderBottomWidth: 0.6,
+    borderBottomColor: "rgba(0, 0, 0, 0.2)",
+    padding: 12,
     margin: 10,
+    color: "#27272a",
+    fontSize: 17,
+    fontFamily: "Antarctica"
   },
 });
 

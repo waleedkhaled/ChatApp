@@ -8,7 +8,7 @@ import {
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { API, graphqlOperation, Auth, Storage } from "aws-amplify";
 import { createMessage, updateChatRoom } from "../../graphql/mutations";
 import * as ImagePicker from "expo-image-picker";
@@ -120,7 +120,7 @@ const InputBox = ({ chatroom }) => {
 
       <View style={styles.container}>
         {/* Plus Icon */}
-        <AntDesign onPress={pickImage} name="plus" size={24} color="#007AFF" />
+        <AntDesign onPress={pickImage} name="plus" size={28} color="#3633DA" />
 
         {/* Text Input */}
         <TextInput
@@ -128,15 +128,16 @@ const InputBox = ({ chatroom }) => {
           onChangeText={setText}
           style={styles.input}
           placeholder="Type your message..."
+          placeholderTextColor="#a1a1aa"
         />
 
         {/* Send Icon */}
-        <MaterialIcons
+        <FontAwesome
           disabled={text.length === 0} //to prevent submitting an empty message
           onPress={onSend}
           style={styles.send}
           name="send"
-          size={18}
+          size={17}
           color="white"
         />
       </View>
@@ -145,7 +146,7 @@ const InputBox = ({ chatroom }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(255, 255, 255, 1)",
+    backgroundColor: "white",
     // width: "100%",
     // bottom: 0,
     flexDirection: "row",
@@ -158,20 +159,21 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: "Antarctica",
-    fontSize: 15,
+    fontSize: 16,
+    color: "#52525b",
     flex: 1,
-    backgroundColor: "#F5F7FB",
-    height: 40,
+    backgroundColor: "#fafafa",
+    height: 44,
     padding: 5,
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
     marginHorizontal: 10,
     borderRadius: 50,
     borderColor: "rgba(0, 0, 0, 0.2)",
     borderWidth: 0.6,
   },
   send: {
-    backgroundColor: "#007AFF",
-    padding: 9,
+    backgroundColor: "#3633DA",
+    padding: 8,
     width: 36,
     height: 36,
     borderRadius: 18,

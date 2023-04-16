@@ -36,6 +36,7 @@ const ContactsScreen = () => {
           title="Add to group"
           disabled={selectedUserIds.length < 1}
           onPress={onAddToGroupPress}
+          color={"#3633DA"}
         />
       ),
     });
@@ -89,7 +90,7 @@ const ContactsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: "white" },
+  container: { backgroundColor: "#fafafa", marginVertical: 12 },
   input: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "lightgray",

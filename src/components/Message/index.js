@@ -53,7 +53,7 @@ const Message = ({ message }) => {
           styles.messageContainer,
           {
             alignSelf: isMe ? "flex-end" : "flex-start",
-            backgroundColor: isMe ? "#007AFF" : "white",
+            backgroundColor: isMe ? "#3633DA" : "white",
             borderBottomLeftRadius: isMe ? 16 : 3,
             borderBottomRightRadius: isMe ? 3 : 16,
           },
@@ -63,6 +63,7 @@ const Message = ({ message }) => {
           <View style={[{ width: imageContainerWidth }, styles.images]}>
             {imageSources.map((imageSource) => (
               <Pressable
+                key={imageSource.uri}
                 style={[
                   styles.imageContainer,
                   imageSources.length === 1 && { flex: 1 },
@@ -85,7 +86,7 @@ const Message = ({ message }) => {
           style={[
             styles.text,
             {
-              color: isMe ? "white" : "#242C34",
+              color: isMe ? "white" : "#52525b",
             },
           ]}
         >
@@ -112,8 +113,8 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   time: {
-    color: "#aaa",
-    marginTop: 3,
+    color: "#a1a1aa",
+    marginTop: 4,
     marginLeft: 1,
   },
   messageContainer: {
@@ -121,14 +122,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     borderRadius: 16,
     maxWidth: "80%",
-    shadowColor: "#242C34",
+
+    shadowColor: "#000",
     shadowOffset: {
-      width: 10,
-      height: 10,
+      width: 0,
+      height: 1,
     },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
-    elevation: 1,
+    shadowOpacity: 0.16,
+    shadowRadius: 1.51,
+
+    elevation: 1.2,
   },
   text: {
     fontFamily: "Antarctica",
@@ -143,6 +146,7 @@ const styles = StyleSheet.create({
     width: "49.5%",
     aspectRatio: 1,
     padding: 3,
+    marginBottom: 6
   },
   image: {
     flex: 1,

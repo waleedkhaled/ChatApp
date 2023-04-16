@@ -14,7 +14,7 @@ export const getCommonChatRoomWithUser = async (userID) => {
     return (
       chatRoomItem.chatRoom.users.items.length === 2 &&
       chatRoomItem.chatRoom.users.items.some(
-        (userItem) => userItem.user.id === userID
+        (userItem) => userItem?.user?.id === userID
       )
     );
   });

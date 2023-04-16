@@ -9,71 +9,99 @@ const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName="Chats"
+    <Tab.Navigator
+      initialRouteName="Chats"
       screenOptions={{
         headerStyle: {
-          backgroundColor: "white",
           height: 80,
-          borderBottomWidth: .6,
-          borderBottomColor: "rgba(0, 0, 0, 0.2)",
+          backgroundColor: "#fafafa",
+        },
+        headerShadowVisible: false,
+        headerBackgroundContainerStyle: {
+          borderBottomWidth: 0.8,
+          borderBottomColor: "rgba(0, 0, 0, 0.1)",
         },
         headerTitleStyle: {
           fontFamily: "Antarctica",
-          fontSize: 22,
+          fontSize: 24,
           fontWeight: "800",
-          color: "#242C34",
+          color: "#27272a",
         },
-        headerTitleAlign: 'center',
+        headerTitleAlign: "center",
         tabBarStyle: {
-          backgroundColor: "white",
+          backgroundColor: "#fafafa",
           height: 80,
           paddingBottom: 12,
           paddingTop: 14,
-          borderTopWidth: .6,
-          borderTopColor: "rgba(0, 0, 0, 0.2)"
         },
-        tabBarInactiveTintColor: "#aaa",
-        tabBarActiveTintColor: "#007AFF",
+        tabBarInactiveTintColor: "#a1a1aaab",
+        tabBarActiveTintColor: "#3633DA",
         tabBarLabelStyle: {
           fontFamily: "Antarctica",
-          fontSize: 12
-        }
+          fontSize: 12,
+        },
       }}
     >
-      <Tab.Screen name="Status" component={NotImplementedScreen}
+      <Tab.Screen
+        name="Status"
+        component={NotImplementedScreen}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons name="shield-alert-outline" size={28} color={color} />),
-        }} />
-      <Tab.Screen name="Calls" component={NotImplementedScreen} options={{
-        tabBarIcon: ({ focused, color, size }) => (<Ionicons name="call-outline" size={28} color={color}
-        />)
-      }} />
-      <Tab.Screen name="Camera" component={NotImplementedScreen} options={{
-        tabBarIcon: ({ focused, color, size }) => (<Ionicons name="camera-outline" size={28} color={color}
-        />)
-      }} />
-      <Tab.Screen name="Chats" component={ChatsScreen} options={({ navigation }) => ({
-        tabBarIcon: ({ focused, color, size }) => (
-          <Ionicons name="chatbubbles-outline" size={28} color={color} />
-        ),
-        headerRight: () => (
-          <Entypo
-            onPress={() => navigation.navigate('Contacts')}
-            name="new-message"
-            size={20}
-            color={"#007AFF"}
-            style={{ marginRight: 15 }}
-          />
-
-        )
-      })} />
-      <Tab.Screen name="Settings" component={SettingsScreen} options={{
-        tabBarIcon: ({ focused, color, size }) => (<Ionicons name="settings-outline" size={28} color={color}
-        />)
-      }} />
+            <MaterialCommunityIcons
+              name="shield-alert-outline"
+              size={29}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Calls"
+        component={NotImplementedScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="call-outline" size={29} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Camera"
+        component={NotImplementedScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="camera-outline" size={29} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chats"
+        component={ChatsScreen}
+        options={({ navigation }) => ({
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="chatbubbles-outline" size={29} color={color} />
+          ),
+          headerRight: () => (
+            <Entypo
+              onPress={() => navigation.navigate("Contacts")}
+              name="new-message"
+              size={22}
+              color={"#3633DA"}
+              style={{ marginRight: 18 }}
+            />
+          ),
+        })}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="settings-outline" size={29} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
-  )
+  );
 }
 
 export default MainTabNavigator;

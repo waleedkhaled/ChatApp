@@ -74,23 +74,24 @@ const ContactsScreen = () => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            padding: 15,
-            paddingHorizontal: 20,
+            marginHorizontal: 18,
+            marginTop: 20,
+            marginBottom: 10,
           }}
         >
           <MaterialIcons
             name="group"
             size={24}
-            color="#007AFF"
+            color="#3633DA"
             style={{
-              marginRight: 20,
-              backgroundColor: "gainsboro",
-              padding: 7,
+              marginRight: 12,
+              backgroundColor: "#e9e9e9",
+              padding: 8,
               borderRadius: 20,
               overflow: "hidden",
             }}
           />
-          <Text style={{ fontFamily: "Antarctica", color: "#007AFF", fontSize: 16 }}>New Group</Text>
+          <Text style={{ fontFamily: "Antarctica", color: "#3633DA", fontSize: 16 }}>New Group</Text>
         </Pressable>
       )}
     />
@@ -99,7 +100,7 @@ const ContactsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#fafafa",
     paddingHorizontal: 8,
     paddingTop: 4,
   },

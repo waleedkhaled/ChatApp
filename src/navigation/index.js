@@ -20,11 +20,12 @@ const Navigator = () => {
           headerStyle: {
             backgroundColor: "white",
           },
+          // headerShadowVisible: false,
           headerTitleStyle: {
             fontFamily: "Antarctica",
-            fontSize: 22,
+            fontSize: 23,
             fontWeight: "bold",
-            color: "#242C34",
+            color: "#27272a",
           },
           headerTitleAlign: "center",
         }}

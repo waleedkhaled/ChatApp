@@ -33,9 +33,9 @@ const ContactListItem = ({
 
       {selectable &&
         (isSelected ? (
-          <AntDesign name="checkcircle" size={24} color="#007AFF" />
+          <AntDesign name="checkcircle" size={24} color="#3633DA" />
         ) : (
-          <FontAwesome name="circle-thin" size={28} color="#ddd" />
+          <FontAwesome name="circle-thin" size={28} color="#bbb" />
         ))}
     </Pressable>
   );
@@ -44,33 +44,34 @@ const ContactListItem = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginVertical: 6,
-    marginHorizontal: 20,
-    height: 70,
+    marginVertical: 2,
+    marginHorizontal: 16,
+    paddingVertical: 10,
     alignItems: "center",
   },
   image: {
-    width: 66,
-    height: 66,
-    borderRadius: 33,
-    marginRight: 10,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: "rgba(0, 0, 0, .1)",
   },
   content: {
     flex: 1,
-    marginRight: 10,
   },
   name: {
     fontFamily: "Antarctica",
-    color: "#242C34",
+    color: "#18181b",
     fontSize: 16,
     fontWeight: "800",
-    marginBottom: 2
+    marginBottom: 4,
   },
   subTitle: {
     fontFamily: "Antarctica",
     fontSize: 14,
     lineHeight: 19,
-    color: "#999",
+    color: "#a1a1aa",
   },
 });
 

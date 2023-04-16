@@ -20,11 +20,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#fafafa",
   },
   text: {
     fontSize: 18,
     fontWeight: "500",
-    color: "gray",
+    color: "#a1a1aa",
   },
   image: {
     width: "80%",
