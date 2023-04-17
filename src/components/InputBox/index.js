@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
     borderTopColor: "rgba(0, 0, 0, 0.2)",
   },
   input: {
-    fontFamily: "Antarctica",
-    fontSize: 16,
+    fontFamily: "Inter-Medium",
+    fontSize: 15,
     color: "#52525b",
     flex: 1,
     backgroundColor: "#fafafa",

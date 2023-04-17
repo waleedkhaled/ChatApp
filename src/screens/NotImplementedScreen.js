@@ -1,16 +1,11 @@
 import { View, Text, Image, StyleSheet } from "react-native";
+import image from "../../assets/images/not-implemented.png"
 
 const NotImplementedScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Not Implemented!</Text>
-      <Image
-        source={{
-          uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/capybara+copy.png",
-        }}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Image source={image} style={styles.image} />
     </View>
   );
 };
@@ -18,18 +13,22 @@ const NotImplementedScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fafafa",
+    backgroundColor: "white",
   },
   text: {
-    fontSize: 18,
-    fontWeight: "500",
+    fontFamily: "Inter-SemiBold",
+    fontSize: 22,
     color: "#a1a1aa",
+    zIndex: 2,
+    marginTop: "30%",
+    marginBottom: 10
   },
   image: {
-    width: "80%",
-    aspectRatio: 2 / 1,
+    width: "100%",
+    height: "50%"
   },
 });
 

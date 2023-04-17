@@ -91,7 +91,11 @@ const ContactsScreen = () => {
               overflow: "hidden",
             }}
           />
-          <Text style={{ fontFamily: "Antarctica", color: "#3633DA", fontSize: 16 }}>New Group</Text>
+          <Text
+            style={{ fontFamily: "Inter-Medium", color: "#3633DA", fontSize: 16 }}
+          >
+            New Group
+          </Text>
         </Pressable>
       )}
     />

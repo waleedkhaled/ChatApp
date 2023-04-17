@@ -98,14 +98,13 @@ const styles = StyleSheet.create({
   name: {
     flex: 1,
     color: "#18181b",
-    fontFamily: "Antarctica",
+    fontFamily: "Inter-SemiBold",
     fontSize: 16,
-    fontWeight: "800",
     marginBottom: 2,
   },
   subTitle: {
     color: "#a1a1aa",
-    fontFamily: "Antarctica",
+    fontFamily: "Inter-Medium",
     fontSize: 14,
     maxWidth: 420,
   },

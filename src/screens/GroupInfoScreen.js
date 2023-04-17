@@ -92,8 +92,9 @@ const ChatRoomInfo = () => {
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          marginTop: 4,
+          marginTop: 6,
           marginBottom: 2,
+          paddingHorizontal: 16,
         }}
       >
         <Text style={styles.sectionTitle}>{users.length} Participants</Text>
@@ -107,6 +108,7 @@ const ChatRoomInfo = () => {
       <View style={styles.section}>
         <FlatList
           data={users}
+          style={styles.contacts}
           renderItem={({ item }) => (
             <ContactListItem
               user={item.user}
@@ -123,30 +125,29 @@ const ChatRoomInfo = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
     flex: 1,
     backgroundColor: "#fafafa",
+    paddingTop: 12
   },
   title: {
-    fontFamily: "Antarctica",
-    fontWeight: "bold",
-    fontSize: 30,
+    fontFamily: "Inter-Bold",
+    fontSize: 28,
     color: "#27272a",
+    paddingHorizontal: 16,
   },
   sectionTitle: {
     flex: 1,
-    fontFamily: "Antarctica",
+    fontFamily: "Inter-SemiBold",
     fontSize: 16,
-    color: "#999",
+    color: "#a1a1aa",
   },
   section: {
     marginVertical: 10,
     borderTopWidth: 0.6,
     borderTopColor: "rgba(0, 0, 0, 0.2)",
-    paddingTop: 8
   },
   invite: {
-    fontFamily: "Antarctica",
+    fontFamily: "Inter-SemiBold",
     fontSize: 16,
     color: "#3633DA",
   },

@@ -113,7 +113,9 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   time: {
+    fontFamily: "Inter-Medium",
     color: "#a1a1aa",
+    fontSize: 13,
     marginTop: 4,
     marginLeft: 1,
   },
@@ -134,8 +136,8 @@ const styles = StyleSheet.create({
     elevation: 1.2,
   },
   text: {
-    fontFamily: "Antarctica",
-    fontSize: 16,
+    fontFamily: "Inter-Medium",
+    fontSize: 15,
     lineHeight: 24,
   },
   images: {

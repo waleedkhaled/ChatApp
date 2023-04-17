@@ -22,9 +22,8 @@ const Navigator = () => {
           },
           // headerShadowVisible: false,
           headerTitleStyle: {
-            fontFamily: "Antarctica",
-            fontSize: 23,
-            fontWeight: "bold",
+            fontFamily: "Inter-SemiBold",
+            fontSize: 22,
             color: "#27272a",
           },
           headerTitleAlign: "center",

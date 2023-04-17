@@ -22,9 +22,8 @@ const MainTabNavigator = () => {
           borderBottomColor: "rgba(0, 0, 0, 0.1)",
         },
         headerTitleStyle: {
-          fontFamily: "Antarctica",
+          fontFamily: "Inter-Bold",
           fontSize: 24,
-          fontWeight: "800",
           color: "#27272a",
         },
         headerTitleAlign: "center",
@@ -37,7 +36,7 @@ const MainTabNavigator = () => {
         tabBarInactiveTintColor: "#a1a1aaab",
         tabBarActiveTintColor: "#3633DA",
         tabBarLabelStyle: {
-          fontFamily: "Antarctica",
+          fontFamily: "Inter-Medium",
           fontSize: 12,
         },
       }}

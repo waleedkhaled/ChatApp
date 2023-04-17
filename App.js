@@ -43,7 +43,9 @@ function App() {
 
   //Load the custom font
   const [fontLoaded] = useFonts({
-    'Antarctica': require('./assets/fonts/AntarcticaBetaVAR-Regular.ttf')
+    'Inter-Medium': require('./assets/fonts/Inter-Medium.otf'),
+    'Inter-SemiBold': require('./assets/fonts/Inter-SemiBold.otf'),
+    'Inter-Bold': require('./assets/fonts/Inter-Bold.otf'),
   })
   if (!fontLoaded) {
     return undefined;

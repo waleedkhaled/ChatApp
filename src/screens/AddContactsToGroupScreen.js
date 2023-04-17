@@ -33,7 +33,7 @@ const ContactsScreen = () => {
     navigation.setOptions({
       headerRight: () => (
         <Button
-          title="Add to group"
+          title="Invite"
           disabled={selectedUserIds.length < 1}
           onPress={onAddToGroupPress}
           color={"#3633DA"}
@@ -73,9 +73,10 @@ const ContactsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={users}
+        style={styles.contacts}
         renderItem={({ item }) => (
           <ContactListItem
             user={item}
@@ -90,13 +91,9 @@ const ContactsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: "#fafafa", marginVertical: 12 },
-  input: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: "lightgray",
-    padding: 10,
-    margin: 10,
-  },
+  contacts:{
+    backgroundColor: "#fafafa"
+  }
 });
 
 export default ContactsScreen;

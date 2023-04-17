@@ -9,7 +9,7 @@ const SettingsScreen = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fafafa",
+        backgroundColor: "white",
       }}
     >
       <Button onPress={() => Auth.signOut()} title="Sign Out" color="#3633DA" />

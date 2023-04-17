@@ -92,6 +92,7 @@ const ContactsScreen = () => {
       />
       <FlatList
         data={users}
+        style={styles.contacts}
         renderItem={({ item }) => (
           <ContactListItem
             user={item}
@@ -114,8 +115,11 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "#27272a",
     fontSize: 17,
-    fontFamily: "Antarctica"
+    fontFamily: "Inter-Medium",
   },
+  contacts: {
+    marginTop: -10
+  }
 });
 
 export default ContactsScreen;

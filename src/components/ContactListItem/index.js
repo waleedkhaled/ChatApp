@@ -59,18 +59,18 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    marginRight: 4
   },
   name: {
-    fontFamily: "Antarctica",
+    fontFamily: "Inter-SemiBold",
     color: "#18181b",
-    fontSize: 16,
-    fontWeight: "800",
-    marginBottom: 4,
+    fontSize: 15,
+    marginBottom: 1,
   },
   subTitle: {
-    fontFamily: "Antarctica",
-    fontSize: 14,
-    lineHeight: 19,
+    fontFamily: "Inter-Medium",
+    fontSize: 13,
+    lineHeight: 17,
     color: "#a1a1aa",
   },
 });
