@@ -1,0 +1,37 @@
+const theme = {
+  light: {
+    mainColor: "#3633DA",
+    headerColor: "#27272a",
+    smallerHeader: "#18181b",
+    subtitleColor: "#a1a1aa",
+    textColor: "#52525b",
+    bgColor: "white",
+    // darkerBgColor: "#fafafa",
+    darkerBgColor: "#f4f4f5",
+    deviderBorderWidth: 0.8,
+    deviderBorderColor: "rgba(0, 0, 0, 0.2)",
+    borderWidth: 0.6,
+    borderColor: "rgba(0, 0, 0, 0.2)",
+    imgBorderWidth: 1,
+    imgBorderColor: "rgba(0, 0, 0, 0.06)",
+    iconColor: "white",
+  },
+  dark: {
+    mainColor: "#434fe0",
+    headerColor: "#f4f4f5",
+    subtitleColor: "#71717a",
+    textColor: "#a1a1aa",
+    // bgColor: "#1D1C22",
+    bgColor: "#18171c",
+    darkerBgColor: "#131313",
+    deviderBorderWidth: 0.35,
+    deviderBorderColor: "rgba(0, 0, 0, 0.05)",
+    borderWidth: 0.8,
+    borderColor: "rgba(250, 250, 250, 0.4)",
+    imgBorderWidth: 1,
+    imgBorderColor: "rgba(250, 250, 250, 0.03)",
+    iconColor: "#f4f4f5",
+  },
+};
+
+export default theme;

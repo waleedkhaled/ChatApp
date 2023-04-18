@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, createContext } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import ChatsScreen from './src/screens/ChatsScreen/ChatsScreen';
@@ -11,10 +11,29 @@ import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify';
 import {getUser} from "./src/graphql/queries";
 import {createUser} from "./src/graphql/mutations";
 
+import { EventRegister } from "react-native-event-listeners";
+import themeContext from "./src/config/themeContext";
+import theme from "./src/config/theme";
+import modeContext from "./src/config/modeContext";
+
 
 Amplify.configure({ ...awsconfig, Analytics: { disabled: true } });
 
 function App() {
+  const [mode, setMode] = useState(false)
+
+  useEffect(() => {
+    let eventListener = EventRegister.addEventListener(
+      "changeTheme",
+      (data) => {
+        setMode(data);
+      }
+    )
+    return () => {
+      EventRegister.removeEventListener(eventListener)
+    }
+  }, [])
+
   useEffect(() => {
     const syncUser = async () => {
       //Authenticated user
@@ -52,10 +71,14 @@ function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Navigator />
-      <StatusBar style="auto" />
-    </View>
+    <modeContext.Provider value={mode}>
+      <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
+        <View style={styles.container}>
+          <Navigator />
+          <StatusBar style="auto" />
+        </View>
+      </themeContext.Provider>
+    </modeContext.Provider>
   );
 }
 

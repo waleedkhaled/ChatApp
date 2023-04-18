@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -14,8 +14,11 @@ import { createMessage, updateChatRoom } from "../../graphql/mutations";
 import * as ImagePicker from "expo-image-picker";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
+import themeContext from "../../config/themeContext";
 
 const InputBox = ({ chatroom }) => {
+  const theme = useContext(themeContext);
+
   const [text, setText] = useState("");
   const [images, setImages] = useState([]);
 
@@ -118,17 +121,31 @@ const InputBox = ({ chatroom }) => {
         </View>
       )}
 
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: theme.bgColor,
+          },
+        ]}
+      >
         {/* Plus Icon */}
-        <AntDesign onPress={pickImage} name="plus" size={28} color="#3633DA" />
+        <AntDesign onPress={pickImage} name="plus" size={28} color={theme.mainColor} />
 
         {/* Text Input */}
         <TextInput
           value={text}
           onChangeText={setText}
-          style={styles.input}
+          style={[
+            styles.input,
+            {
+              backgroundColor: theme.darkerBgColor,
+              color: theme.textColor,
+            },
+          ]}
           placeholder="Type your message..."
-          placeholderTextColor="#a1a1aa"
+          placeholderTextColor={theme.subtitleColor}
+          selectionColor={theme.mainColor}
         />
 
         {/* Send Icon */}
@@ -138,7 +155,7 @@ const InputBox = ({ chatroom }) => {
           style={styles.send}
           name="send"
           size={17}
-          color="white"
+          color={theme.iconColor}
         />
       </View>
     </>
@@ -146,7 +163,6 @@ const InputBox = ({ chatroom }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
     // width: "100%",
     // bottom: 0,
     flexDirection: "row",
@@ -160,9 +176,7 @@ const styles = StyleSheet.create({
   input: {
     fontFamily: "Inter-Medium",
     fontSize: 15,
-    color: "#52525b",
     flex: 1,
-    backgroundColor: "#fafafa",
     height: 44,
     padding: 5,
     paddingHorizontal: 16,

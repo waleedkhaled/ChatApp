@@ -1,7 +1,7 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text } from "react-native";
-import React from "react";
+import { View, Text, TouchableOpacity, Pressable } from "react-native";
+import React, { useContext } from "react";
 import ChatScreen from "../screens/ChatScreen";
 import ChatsScreen from "../screens/ChatsScreen/ChatsScreen";
 import ContactsScreen from "../screens/ContactsScreen";
@@ -9,24 +9,39 @@ import NewGroupScreen from "../screens/NewGroupScreen";
 import GroupInfoScreen from "../screens/GroupInfoScreen";
 import AddContactsToGroupScreen from "../screens/AddContactsToGroupScreen";
 import MainTabNavigator from "./MainTabNavigator";
+import themeContext from "../config/themeContext";
+import modeContext from "../config/modeContext";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 
+const darkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    card: "#1D1C22",
+  },
+};
+
 const Navigator = () => {
+  const theme = useContext(themeContext);
+  const mode = useContext(modeContext);
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={mode ? darkTheme : DefaultTheme}>
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "white",
+            // backgroundColor: theme.bgColor,
           },
           // headerShadowVisible: false,
           headerTitleStyle: {
             fontFamily: "Inter-SemiBold",
             fontSize: 22,
-            color: "#27272a",
+            color: theme.headerColor,
           },
           headerTitleAlign: "center",
+          headerBackTitleVisible: false,
         }}
       >
         <Stack.Screen

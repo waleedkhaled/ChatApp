@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   View,
   StyleSheet,
@@ -14,8 +14,11 @@ import { API, graphqlOperation } from "aws-amplify";
 import { getChatRoom, listMessagesByChatRoom } from "../graphql/queries";
 import { onCreateMessage, onUpdateChatRoom } from "../graphql/subscriptions";
 import { Feather } from "@expo/vector-icons";
+import themeContext from "../config/themeContext";
 
 const ChatScreen = () => {
+  const theme = useContext(themeContext);
+
   const [chatRoom, setChatRoom] = useState(null);
   const [messages, setMessages] = useState([]);
 
@@ -95,7 +98,7 @@ const ChatScreen = () => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 60 : 90}
       style={{ flex: 1 }}
     >
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: theme.darkerBgColor}]}>
         <FlatList
           data={messages}
           renderItem={({ item }) => <Message message={item} />}
@@ -111,7 +114,6 @@ const ChatScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fafafa",
   },
   list: {
     paddingHorizontal: 16,

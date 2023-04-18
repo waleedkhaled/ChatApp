@@ -1,10 +1,13 @@
-import { FlatList, StyleSheet } from "react-native";
-import { useEffect, useState } from "react";
+import { FlatList } from "react-native";
+import { useContext, useEffect, useState } from "react";
 import ChatListItem from "../../components/ChatListItem";
 import { API, graphqlOperation, Auth } from "aws-amplify";
 import { listChatRooms } from "./queries";
+import themeContext from "../../config/themeContext";
 
 const ChatsScreen = () => {
+  const theme = useContext(themeContext);
+  
   const [chatRooms, setChatRooms] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -36,19 +39,15 @@ const ChatsScreen = () => {
     <FlatList
       data={chatRooms}
       renderItem={({ item }) => <ChatListItem chat={item.chatRoom} />}
-      style={styles.container}
+      style={{
+        backgroundColor: theme.darkerBgColor,
+        paddingHorizontal: 14,
+        paddingTop: 4,
+      }}
       refreshing={loading}
       onRefresh={fetchChatRooms}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    paddingHorizontal: 14,
-    paddingTop: 4,
-  },
-});
 
 export default ChatsScreen;

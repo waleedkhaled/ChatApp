@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FlatList, View, TextInput, StyleSheet, Button } from "react-native";
 import ContactListItem from "../components/ContactListItem";
 import { API, graphqlOperation, Auth } from "aws-amplify";
 import { listUsers } from "../graphql/queries";
 import { createChatRoom, createUserChatRoom } from "../graphql/mutations";
-
 import { useNavigation, useRoute } from "@react-navigation/native";
+import themeContext from "../config/themeContext";
 
 const ContactsScreen = () => {
+  const theme = useContext(themeContext);
   const [users, setUsers] = useState([]);
   const [selectedUserIds, setSelectedUserIds] = useState([]);
 
@@ -36,7 +37,7 @@ const ContactsScreen = () => {
           title="Invite"
           disabled={selectedUserIds.length < 1}
           onPress={onAddToGroupPress}
-          color={"#3633DA"}
+          color={theme.mainColor}
         />
       ),
     });
@@ -73,10 +74,12 @@ const ContactsScreen = () => {
   };
 
   return (
-    <View>
+    <View style={{
+      height: "100%",
+      backgroundColor: theme.darkerBgColor,
+    }}>
       <FlatList
         data={users}
-        style={styles.contacts}
         renderItem={({ item }) => (
           <ContactListItem
             user={item}
@@ -89,11 +92,5 @@ const ContactsScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  contacts:{
-    backgroundColor: "#fafafa"
-  }
-});
 
 export default ContactsScreen;

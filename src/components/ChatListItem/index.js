@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { onUpdateChatRoom } from "../../graphql/subscriptions";
+import themeContext from "../../config/themeContext";
 
 dayjs.extend(relativeTime);
 
 const ChatListItem = ({ chat }) => {
+  const theme = useContext(themeContext);
   const navigation = useNavigation();
 
   const [user, setUser] = useState(null);
@@ -52,20 +54,36 @@ const ChatListItem = ({ chat }) => {
       }
       style={styles.container}
     >
-      <Image source={{ uri: user?.image }} style={styles.image} />
-      
+      <Image
+        source={{ uri: user?.image }}
+        style={[
+          styles.image,
+          {
+            borderWidth: theme.imgBorderWidth,
+            borderColor: theme.imgBorderColor,
+            backgroundColor: theme.bgColor
+          },
+        ]}
+      />
+
       <View style={styles.content}>
         <View style={styles.row}>
-          <Text style={styles.name} numberOfLines={1}>
+          <Text
+            style={[styles.name, { color: theme.headerColor }]}
+            numberOfLines={1}
+          >
             {chatRoom.name || user?.name}
           </Text>
           {chatRoom.LastMessage && (
-            <Text style={styles.subTitle}>
+            <Text style={[styles.subTitle, { color: theme.subtitleColor }]}>
               {dayjs(chatRoom.LastMessage?.createdAt).fromNow(true)}
             </Text>
           )}
         </View>
-        <Text style={styles.subTitle} numberOfLines={1}>
+        <Text
+          style={[styles.subTitle, { color: theme.subtitleColor }]}
+          numberOfLines={1}
+        >
           {chatRoom.LastMessage?.text}
         </Text>
       </View>
@@ -85,8 +103,8 @@ const styles = StyleSheet.create({
     height: 66,
     borderRadius: 33,
     marginRight: 10,
-    borderWidth: 1,
-    borderColor: "rgba(0, 0, 0, 0.1)",
+    // borderWidth: 1,
+    // borderColor: "rgba(0, 0, 0, 0.1)",
   },
   content: {
     flex: 1,
@@ -97,13 +115,12 @@ const styles = StyleSheet.create({
   },
   name: {
     flex: 1,
-    color: "#18181b",
     fontFamily: "Inter-SemiBold",
     fontSize: 16,
     marginBottom: 2,
+    textAlign: "left"
   },
   subTitle: {
-    color: "#a1a1aa",
     fontFamily: "Inter-Medium",
     fontSize: 14,
     maxWidth: 420,

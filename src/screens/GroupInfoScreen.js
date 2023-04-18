@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   StyleSheet,
   FlatList,
@@ -13,8 +13,11 @@ import { API, graphqlOperation } from "aws-amplify";
 import { onUpdateChatRoom } from "../graphql/subscriptions";
 import { deleteUserChatRoom } from "../graphql/mutations";
 import ContactListItem from "../components/ContactListItem";
+import themeContext from "../config/themeContext";
 
 const ChatRoomInfo = () => {
+  const theme = useContext(themeContext);
+
   const [chatRoom, setChatRoom] = useState(null);
   const [loading, setLoading] = useState(false);
   const route = useRoute();
@@ -86,8 +89,24 @@ const ChatRoomInfo = () => {
   const users = chatRoom.users.items.filter((item) => !item._deleted);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{chatRoom.name}</Text>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme.darkerBgColor,
+        },
+      ]}
+    >
+      <Text
+        style={[
+          styles.title,
+          {
+            color: theme.headerColor,
+          },
+        ]}
+      >
+        {chatRoom.name}
+      </Text>
       <View
         style={{
           flexDirection: "row",
@@ -97,15 +116,24 @@ const ChatRoomInfo = () => {
           paddingHorizontal: 16,
         }}
       >
-        <Text style={styles.sectionTitle}>{users.length} Participants</Text>
+        <Text style={[styles.sectionTitle, { color: theme.subtitleColor }]}>
+          {users.length} Participants
+        </Text>
         <Text
           onPress={() => navigation.navigate("Add Contacts", { chatRoom })}
-          style={styles.invite}
+          style={[styles.invite, { color: theme.mainColor }]}
         >
           Invite Friends
         </Text>
       </View>
-      <View style={styles.section}>
+      <View
+        style={[
+          styles.section,
+          {
+            borderTopColor: theme.subtitleColor,
+          },
+        ]}
+      >
         <FlatList
           data={users}
           style={styles.contacts}
@@ -126,20 +154,17 @@ const ChatRoomInfo = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fafafa",
-    paddingTop: 12
+    paddingTop: 12,
   },
   title: {
     fontFamily: "Inter-Bold",
     fontSize: 28,
-    color: "#27272a",
     paddingHorizontal: 16,
   },
   sectionTitle: {
     flex: 1,
     fontFamily: "Inter-SemiBold",
     fontSize: 16,
-    color: "#a1a1aa",
   },
   section: {
     marginVertical: 10,
@@ -149,7 +174,6 @@ const styles = StyleSheet.create({
   invite: {
     fontFamily: "Inter-SemiBold",
     fontSize: 16,
-    color: "#3633DA",
   },
 });
 

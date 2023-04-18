@@ -1,40 +1,44 @@
+import { useContext } from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import NotImplementedScreen from "../screens/NotImplementedScreen";
 import ChatsScreen from "../screens/ChatsScreen/ChatsScreen";
 import ChatScreen from "../screens/ChatScreen";
 import { Ionicons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import SettingsScreen from "../screens/SettingsScreen";
+import themeContext from "../config/themeContext";
 
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = () => {
+  const theme = useContext(themeContext);
+
   return (
     <Tab.Navigator
       initialRouteName="Chats"
       screenOptions={{
         headerStyle: {
           height: 80,
-          backgroundColor: "#fafafa",
+          // backgroundColor: theme.bgColor,
         },
         headerShadowVisible: false,
         headerBackgroundContainerStyle: {
-          borderBottomWidth: 0.8,
-          borderBottomColor: "rgba(0, 0, 0, 0.1)",
+          // borderBottomWidth: theme.deviderBorderWidth,
+          // borderBottomColor: theme.deviderBorderColor,
         },
         headerTitleStyle: {
           fontFamily: "Inter-Bold",
           fontSize: 24,
-          color: "#27272a",
+          color: theme.headerColor,
         },
         headerTitleAlign: "center",
         tabBarStyle: {
-          backgroundColor: "#fafafa",
+          // backgroundColor: theme.bgColor,
           height: 80,
           paddingBottom: 12,
           paddingTop: 14,
         },
-        tabBarInactiveTintColor: "#a1a1aaab",
-        tabBarActiveTintColor: "#3633DA",
+        tabBarInactiveTintColor: theme.subtitleColor,
+        tabBarActiveTintColor: theme.mainColor,
         tabBarLabelStyle: {
           fontFamily: "Inter-Medium",
           fontSize: 12,
@@ -84,7 +88,7 @@ const MainTabNavigator = () => {
               onPress={() => navigation.navigate("Contacts")}
               name="new-message"
               size={22}
-              color={"#3633DA"}
+              color={theme.mainColor}
               style={{ marginRight: 18 }}
             />
           ),

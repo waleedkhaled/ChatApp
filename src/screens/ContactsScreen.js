@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FlatList, StyleSheet, Pressable, Text } from "react-native";
 import ContactListItem from "../components/ContactListItem";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -7,8 +7,11 @@ import { API, graphqlOperation, Auth } from "aws-amplify";
 import { listUsers } from "../graphql/queries";
 import { createChatRoom, createUserChatRoom } from "../graphql/mutations";
 import { getCommonChatRoomWithUser } from "../services/chatRoomService";
+import themeContext from "../config/themeContext";
 
 const ContactsScreen = () => {
+  const theme = useContext(themeContext);
+
   const [users, setUsers] = useState([]);
 
   const navigation = useNavigation();
@@ -65,7 +68,7 @@ const ContactsScreen = () => {
           onPress={() => createAChatRoomWithTheUser(item)}
         />
       )}
-      style={styles.container}
+      style={[styles.container, {backgroundColor: theme.darkerBgColor}]}
       ListHeaderComponent={() => (
         <Pressable
           onPress={() => {
@@ -82,7 +85,7 @@ const ContactsScreen = () => {
           <MaterialIcons
             name="group"
             size={24}
-            color="#3633DA"
+            color={theme.mainColor}
             style={{
               marginRight: 12,
               backgroundColor: "#e9e9e9",
@@ -92,7 +95,7 @@ const ContactsScreen = () => {
             }}
           />
           <Text
-            style={{ fontFamily: "Inter-Medium", color: "#3633DA", fontSize: 16 }}
+            style={{ fontFamily: "Inter-Medium", color: theme.mainColor, fontSize: 16 }}
           >
             New Group
           </Text>
@@ -104,7 +107,6 @@ const ContactsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fafafa",
     paddingHorizontal: 8,
     paddingTop: 4,
   },

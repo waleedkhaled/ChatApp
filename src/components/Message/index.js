@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   View,
   Text,
@@ -13,10 +13,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Auth, Storage } from "aws-amplify";
 import { S3Image } from "aws-amplify-react-native";
 import ImageView from "react-native-image-viewing";
+import themeContext from "../../config/themeContext";
 
 dayjs.extend(relativeTime);
 
 const Message = ({ message }) => {
+  const theme = useContext(themeContext);
+
   const [isMe, setIsMe] = useState(false);
   const [imageSources, setImageSources] = useState([]);
   const [imageViewerVisible, setImageViewerVisible] = useState(false);
@@ -53,7 +56,7 @@ const Message = ({ message }) => {
           styles.messageContainer,
           {
             alignSelf: isMe ? "flex-end" : "flex-start",
-            backgroundColor: isMe ? "#3633DA" : "white",
+            backgroundColor: isMe ? theme.mainColor : theme.bgColor,
             borderBottomLeftRadius: isMe ? 16 : 3,
             borderBottomRightRadius: isMe ? 3 : 16,
           },
@@ -86,7 +89,7 @@ const Message = ({ message }) => {
           style={[
             styles.text,
             {
-              color: isMe ? "white" : "#52525b",
+              color: isMe ? "#f2f2f2" : theme.textColor,
             },
           ]}
         >
@@ -99,6 +102,7 @@ const Message = ({ message }) => {
           {
             alignSelf: isMe ? "flex-end" : "flex-start",
             marginRight: isMe ? 1 : 6,
+            color: theme.subtitleColor
           },
         ]}
       >
@@ -114,7 +118,6 @@ const styles = StyleSheet.create({
   },
   time: {
     fontFamily: "Inter-Medium",
-    color: "#a1a1aa",
     fontSize: 13,
     marginTop: 4,
     marginLeft: 1,

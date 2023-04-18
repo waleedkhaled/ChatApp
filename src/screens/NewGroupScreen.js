@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FlatList, View, TextInput, StyleSheet, Button } from "react-native";
 import ContactListItem from "../components/ContactListItem";
 import { API, graphqlOperation, Auth } from "aws-amplify";
 import { listUsers } from "../graphql/queries";
 import { createChatRoom, createUserChatRoom } from "../graphql/mutations";
-
 import { useNavigation } from "@react-navigation/native";
+import themeContext from "../config/themeContext";
 
 const ContactsScreen = () => {
+  const theme = useContext(themeContext);
   const [users, setUsers] = useState([]);
   const [selectedUserIds, setSelectedUserIds] = useState([]);
   const [name, setName] = useState("");
@@ -27,7 +28,7 @@ const ContactsScreen = () => {
           title="Create"
           disabled={!name || selectedUserIds.length < 1}
           onPress={onCreateGroupPress}
-          color={"#3633DA"}
+          color={theme.mainColor}
         />
       ),
     });
@@ -82,13 +83,21 @@ const ContactsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        height: "100%",
+        backgroundColor: theme.darkerBgColor,
+        borderBottomWidth: theme.borderWidth,
+        borderBottomColor: theme.borderColor,
+      }}
+    >
       <TextInput
         placeholder="Group name"
-        placeholderTextColor="#a1a1aa"
+        placeholderTextColor={theme.subtitleColor}
         value={name}
         onChangeText={setName}
-        style={styles.input}
+        style={[styles.input, { color: theme.textColor }]}
+        selectionColor={theme.mainColor}
       />
       <FlatList
         data={users}
@@ -107,10 +116,9 @@ const ContactsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: "#fafafa" },
   input: {
     borderBottomWidth: 0.6,
-    borderBottomColor: "rgba(0, 0, 0, 0.2)",
+    borderBottomColor: "rgba(250, 250, 250, 0.2)",
     padding: 12,
     margin: 10,
     color: "#27272a",
@@ -118,8 +126,8 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Medium",
   },
   contacts: {
-    marginTop: -10
-  }
+    marginTop: -10,
+  },
 });
 
 export default ContactsScreen;

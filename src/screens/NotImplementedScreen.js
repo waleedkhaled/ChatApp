@@ -1,10 +1,14 @@
+import { useContext } from "react"
 import { View, Text, Image, StyleSheet } from "react-native";
 import image from "../../assets/images/not-implemented.png"
+import themeContext from "../config/themeContext";
 
 const NotImplementedScreen = () => {
+  const theme = useContext(themeContext);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Not Implemented!</Text>
+    <View style={[styles.container, {backgroundColor: theme.bgColor}]}>
+      <Text style={[styles.text, {color: theme.subtitleColor}]}>Not Implemented!</Text>
       <Image source={image} style={styles.image} />
     </View>
   );
@@ -16,15 +20,13 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
   },
   text: {
     fontFamily: "Inter-SemiBold",
     fontSize: 22,
-    color: "#a1a1aa",
     zIndex: 2,
     marginTop: "30%",
-    marginBottom: 10
+    marginBottom: 20
   },
   image: {
     width: "100%",
