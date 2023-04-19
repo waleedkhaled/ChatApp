@@ -91,7 +91,7 @@ const MainTabNavigator = () => {
             <AntDesign
               onPress={() => navigation.navigate("Contacts")}
               name="contacts"
-              size={28}
+              size={27}
               color={theme.mainColor}
               style={{ marginRight: 18 }}
             />

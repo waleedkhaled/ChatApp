@@ -5,7 +5,7 @@ import ChatsScreen from './src/screens/ChatsScreen/ChatsScreen';
 import ChatScreen from './src/screens/ChatScreen';
 import Navigator from './src/navigation';
 import { useFonts } from 'expo-font';
-import { withAuthenticator } from 'aws-amplify-react-native';
+import { withAuthenticator, AmplifyTheme } from "aws-amplify-react-native";
 import awsconfig from "./src/aws-exports"
 import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify';
 import {getUser} from "./src/graphql/queries";
@@ -90,4 +90,49 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withAuthenticator(App);
+const authTheme = {
+  ...AmplifyTheme,
+  container: {
+    ...AmplifyTheme.container,
+    backgroundColor: "#f4f4f5",
+  },
+  sectionHeaderText: {
+    ...AmplifyTheme.sectionHeaderText,
+    color: "#27272a",
+    fontSize: 22,
+  },
+  sectionFooterLink: {
+    ...AmplifyTheme.sectionFooterLink,
+    color: "#3633DA",
+  },
+  sectionFooterLinkDisabled: {
+    ...AmplifyTheme.sectionFooterLinkDisabled,
+    color: "#5e5ce1",
+  },
+  input: {
+    ...AmplifyTheme.input,
+    color: "#52525b",
+  },
+  inputLabel: {
+    ...AmplifyTheme.inputLabel,
+    color: "#27272a",
+  },
+  phoneInput: {
+    ...AmplifyTheme.phoneInput,
+    color: "#52525b",
+  },
+  button: {
+    ...AmplifyTheme.button,
+    backgroundColor: "#3633DA",
+  },
+  buttonDisabled: {
+    ...AmplifyTheme.buttonDisabled,
+    backgroundColor: "#5e5ce1",
+  },
+  navButton: {
+    ...AmplifyTheme.navButton,
+    backgroundColor: "#3633DA",
+  },
+};
+
+export default withAuthenticator(App, {theme: authTheme});

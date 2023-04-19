@@ -15,11 +15,18 @@ const ContactsScreen = () => {
   const [users, setUsers] = useState([]);
 
   const navigation = useNavigation();
+  
+  const currentUserId = async () => {
+      const authUser = await Auth.currentAuthenticatedUser();
+      const userId = authUser.attributes.sub
 
+      API.graphql(graphqlOperation(listUsers)).then((result) => {
+        setUsers(result.data?.listUsers?.items.filter((user) => user.id !== userId));
+      });
+    }
+  
   useEffect(() => {
-    API.graphql(graphqlOperation(listUsers)).then((result) => {
-      setUsers(result.data?.listUsers?.items);
-    });
+    currentUserId()
   }, []);
 
   const createAChatRoomWithTheUser = async (user) => {

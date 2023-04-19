@@ -10,7 +10,7 @@ const Avatar = ({user, chatRoom}) => {
   const isGroup = chatRoom?.users?.items?.length > 2
 
   return (
-    user?.image ? (
+    user?.image && !isGroup ? (
         <Image
           source={{ uri: user?.image }}
           style={[

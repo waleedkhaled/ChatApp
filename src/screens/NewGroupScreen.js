@@ -87,8 +87,6 @@ const ContactsScreen = () => {
       style={{
         height: "100%",
         backgroundColor: theme.darkerBgColor,
-        borderBottomWidth: theme.borderWidth,
-        borderBottomColor: theme.borderColor,
       }}
     >
       <TextInput
@@ -96,7 +94,16 @@ const ContactsScreen = () => {
         placeholderTextColor={theme.subtitleColor}
         value={name}
         onChangeText={setName}
-        style={[styles.input, { color: theme.textColor }]}
+        style={[
+          styles.input,
+          {
+            color: theme.textColor,
+            borderBottomWidth: theme.borderWidth,
+            borderBottomColor: theme.borderColor,
+            // borderBottomWidth: 0.6,
+            // borderBottomColor: "rgba(250, 250, 250, 0.2)",
+          },
+        ]}
         selectionColor={theme.mainColor}
       />
       <FlatList
@@ -117,8 +124,6 @@ const ContactsScreen = () => {
 
 const styles = StyleSheet.create({
   input: {
-    borderBottomWidth: 0.6,
-    borderBottomColor: "rgba(250, 250, 250, 0.2)",
     padding: 12,
     margin: 10,
     color: "#27272a",
