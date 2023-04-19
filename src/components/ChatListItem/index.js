@@ -6,6 +6,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { onUpdateChatRoom } from "../../graphql/subscriptions";
 import themeContext from "../../config/themeContext";
+import Avatar from "../Avatar/Avatar";
 
 dayjs.extend(relativeTime);
 
@@ -54,22 +55,11 @@ const ChatListItem = ({ chat }) => {
       }
       style={styles.container}
     >
-      <Image
-        source={{ uri: user?.image }}
-        style={[
-          styles.image,
-          {
-            borderWidth: theme.imgBorderWidth,
-            borderColor: theme.imgBorderColor,
-            backgroundColor: theme.bgColor
-          },
-        ]}
-      />
-
+      <Avatar user={user} chatRoom={chatRoom} />
       <View style={styles.content}>
         <View style={styles.row}>
           <Text
-            style={[styles.name, { color: theme.headerColor }]}
+            style={[styles.name, { color: theme.smallHeaderColor }]}
             numberOfLines={1}
           >
             {chatRoom.name || user?.name}
@@ -98,14 +88,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: "center",
   },
-  image: {
-    width: 66,
-    height: 66,
-    borderRadius: 33,
-    marginRight: 10,
-    // borderWidth: 1,
-    // borderColor: "rgba(0, 0, 0, 0.1)",
-  },
   content: {
     flex: 1,
   },
@@ -115,14 +97,15 @@ const styles = StyleSheet.create({
   },
   name: {
     flex: 1,
-    fontFamily: "Inter-SemiBold",
+    fontFamily: "Inter-Bold",
     fontSize: 16,
     marginBottom: 2,
-    textAlign: "left"
+    textAlign: "left",
   },
   subTitle: {
     fontFamily: "Inter-Medium",
     fontSize: 14,
+    textAlign: "left",
     maxWidth: 420,
   },
 });

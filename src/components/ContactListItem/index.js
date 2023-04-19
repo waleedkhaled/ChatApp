@@ -8,6 +8,7 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import themeContext from "../../config/themeContext";
+import Avatar from "../Avatar/Avatar";
 
 dayjs.extend(relativeTime);
 
@@ -23,20 +24,23 @@ const ContactListItem = ({
 
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Image source={{ uri: user.image }} style={[styles.image,{
-        borderWidth: theme.imgBorderWidth,
-        borderColor: theme.imgBorderColor,
-        backgroundColor: theme.bgColor
-      }]} />
-
+      <Avatar user={user} />
       <View style={styles.content}>
-        <Text style={[styles.name, {color: theme.headerColor,}]} numberOfLines={1}>
+        <Text
+          style={[styles.name, { color: theme.smallHeaderColor }]}
+          numberOfLines={1}
+        >
           {user.name}
         </Text>
-
-        <Text numberOfLines={2} style={[styles.subTitle, {
-          color: theme.subtitleColor
-        }]}>
+        <Text
+          numberOfLines={2}
+          style={[
+            styles.subTitle,
+            {
+              color: theme.subtitleColor,
+            },
+          ]}
+        >
           {user.status}
         </Text>
       </View>
@@ -45,7 +49,11 @@ const ContactListItem = ({
         (isSelected ? (
           <AntDesign name="checkcircle" size={24} color={theme.mainColor} />
         ) : (
-          <FontAwesome name="circle-thin" size={28} color={theme.subtitleColor} />
+          <FontAwesome
+            name="circle-thin"
+            size={28}
+            color={theme.subtitleColor}
+          />
         ))}
     </Pressable>
   );
@@ -59,29 +67,19 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: "center",
   },
-  image: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    marginRight: 12,
-    borderWidth: 1,
-    borderColor: "rgba(0, 0, 0, .1)",
-  },
   content: {
     flex: 1,
     marginRight: 4,
   },
   name: {
-    fontFamily: "Inter-SemiBold",
-    color: "#18181b",
-    fontSize: 15,
+    fontFamily: "Inter-Bold",
+    fontSize: 16,
     marginBottom: 2,
   },
   subTitle: {
     fontFamily: "Inter-Medium",
     fontSize: 14,
     lineHeight: 18,
-    color: "#a1a1aa",
   },
 });
 

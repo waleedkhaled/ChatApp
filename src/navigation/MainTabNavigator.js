@@ -2,8 +2,12 @@ import { useContext } from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import NotImplementedScreen from "../screens/NotImplementedScreen";
 import ChatsScreen from "../screens/ChatsScreen/ChatsScreen";
-import ChatScreen from "../screens/ChatScreen";
-import { Ionicons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
+import {
+  Ionicons,
+  Entypo,
+  MaterialCommunityIcons,
+  AntDesign,
+} from "@expo/vector-icons";
 import SettingsScreen from "../screens/SettingsScreen";
 import themeContext from "../config/themeContext";
 
@@ -84,10 +88,10 @@ const MainTabNavigator = () => {
             <Ionicons name="chatbubbles-outline" size={29} color={color} />
           ),
           headerRight: () => (
-            <Entypo
+            <AntDesign
               onPress={() => navigation.navigate("Contacts")}
-              name="new-message"
-              size={22}
+              name="contacts"
+              size={28}
               color={theme.mainColor}
               style={{ marginRight: 18 }}
             />

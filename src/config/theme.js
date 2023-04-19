@@ -15,6 +15,9 @@ const theme = {
     imgBorderWidth: 1,
     imgBorderColor: "rgba(0, 0, 0, 0.06)",
     iconColor: "white",
+    userIconColor: "#e4e4e7",
+    newGroup: "#e4e4e7",
+    smallHeaderColor: "#52525b",
   },
   dark: {
     mainColor: "#434fe0",
@@ -29,8 +32,11 @@ const theme = {
     borderWidth: 0.8,
     borderColor: "rgba(250, 250, 250, 0.4)",
     imgBorderWidth: 1,
-    imgBorderColor: "rgba(250, 250, 250, 0.03)",
+    imgBorderColor: "rgba(250, 250, 250, 0.06)",
     iconColor: "#f4f4f5",
+    userIconColor: "#262626",
+    newGroup: "#262626",
+    smallHeaderColor: "#b5b5b6",
   },
 };
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { FlatList, StyleSheet, Pressable, Text } from "react-native";
 import ContactListItem from "../components/ContactListItem";
-import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { API, graphqlOperation, Auth } from "aws-amplify";
 import { listUsers } from "../graphql/queries";
@@ -82,14 +82,14 @@ const ContactsScreen = () => {
             marginBottom: 10,
           }}
         >
-          <MaterialIcons
-            name="group"
-            size={24}
+          <FontAwesome
+            name="users"
+            size={18}
             color={theme.mainColor}
             style={{
               marginRight: 12,
-              backgroundColor: "#e9e9e9",
-              padding: 8,
+              backgroundColor: theme.newGroup,
+              padding: 10,
               borderRadius: 20,
               overflow: "hidden",
             }}

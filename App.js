@@ -75,7 +75,7 @@ function App() {
       <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
         <View style={styles.container}>
           <Navigator />
-          <StatusBar style="auto" />
+          <StatusBar style={mode ? "dark" : "light"} />
         </View>
       </themeContext.Provider>
     </modeContext.Provider>

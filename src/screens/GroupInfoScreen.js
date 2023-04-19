@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
   Alert,
 } from "react-native";
-import { useRoute, useNavigation } from "@react-navigation/native";
+import { useRoute, useNavigation, useIsFocused } from "@react-navigation/native";
 
 import { API, graphqlOperation } from "aws-amplify";
 import { onUpdateChatRoom } from "../graphql/subscriptions";
@@ -22,6 +22,7 @@ const ChatRoomInfo = () => {
   const [loading, setLoading] = useState(false);
   const route = useRoute();
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   const chatroomID = route.params.id;
 
@@ -35,7 +36,7 @@ const ChatRoomInfo = () => {
   };
 
   useEffect(() => {
-    fetchChatRoom();
+    isFocused && fetchChatRoom();
 
     // Subscribe to onUpdateChatRoom
     const subscription = API.graphql(
@@ -54,7 +55,7 @@ const ChatRoomInfo = () => {
 
     // Stop receiving data updates from the subscription
     return () => subscription.unsubscribe();
-  }, [chatroomID]);
+  }, [chatroomID, isFocused]);
 
   const removeChatRoomUser = async (chatRoomUser) => {
     await API.graphql(
@@ -76,7 +77,10 @@ const ChatRoomInfo = () => {
         {
           text: "Remove",
           style: "destructive",
-          onPress: () => removeChatRoomUser(chatRoomUser),
+          onPress: async () => {
+            await removeChatRoomUser(chatRoomUser)
+            fetchChatRoom()
+          }
         },
       ]
     );
@@ -136,7 +140,9 @@ const ChatRoomInfo = () => {
       >
         <FlatList
           data={users}
-          style={styles.contacts}
+          style={{
+            height: "100%",
+          }}
           renderItem={({ item }) => (
             <ContactListItem
               user={item.user}
@@ -155,6 +161,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 12,
+    height: "100%"
   },
   title: {
     fontFamily: "Inter-Bold",
